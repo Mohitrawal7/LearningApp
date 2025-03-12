@@ -1,4 +1,7 @@
 package com.mohit.LearningApp.repository;
 
-public class GroupRepository {
+import com.mohit.LearningApp.model.Group;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GroupRepository extends JpaRepository<Group,Integer> {
 }

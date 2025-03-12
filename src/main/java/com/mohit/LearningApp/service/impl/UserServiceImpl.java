@@ -1,4 +1,6 @@
 package com.mohit.LearningApp.service.impl;
 
-public class UserServiceImpl {
+import com.mohit.LearningApp.service.UserService;
+
+public class UserServiceImpl  implements UserService {
 }

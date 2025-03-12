@@ -1,4 +1,7 @@
 package com.mohit.LearningApp.repository;
 
-public class UserRepository {
+import com.mohit.LearningApp.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User,Integer> {
 }
