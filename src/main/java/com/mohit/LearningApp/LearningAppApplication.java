@@ -11,7 +11,7 @@ public class LearningAppApplication {
 
 
 
-	@RequestMapping("/")
+	@RequestMapping("/co")
 	String home() {
 		return "Hello World!";
 	}

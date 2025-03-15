@@ -1,9 +1,5 @@
 package com.mohit.LearningApp.model;
 
-
-//import jakarta.persistence.Column;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Id;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +17,12 @@ public class User {
     @Id
     @Column(name = "userid", nullable = false )
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_generator")
-    private int userid;
+    private Integer userid;
 
     @Column(name = "username",nullable = false,unique = true)
     private String username;
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email",nullable = false,unique = true)
     private String email;
 
     @Column(name ="password",nullable = false)
@@ -35,6 +31,21 @@ public class User {
     @Column(name = "active",nullable = false)
     private boolean active;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 
 
 }

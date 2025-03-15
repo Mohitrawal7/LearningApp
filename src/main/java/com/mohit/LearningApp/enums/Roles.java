@@ -1,4 +1,8 @@
 package com.mohit.LearningApp.enums;
 
-public class Roles {
+public enum Roles {
+
+    admin,
+    user
+
 }

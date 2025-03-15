@@ -14,4 +14,21 @@ public class UserController {
         return "defoamer";
     }
 
+
+    @GetMapping("/public/home")
+    public String publicHome() {
+        return "Welcome to Public Home!";
+    }
+
+    @GetMapping("/user/home")
+    public String userHome() {
+        return "Welcome, User!";
+    }
+
+    @GetMapping("/admin/home")
+    public String adminHome() {
+        return "Welcome, Admin!";
+    }
+
+
 }
