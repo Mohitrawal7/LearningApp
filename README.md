@@ -1,4 +1,4 @@
-This project is on learnig app
+This project is on learning app
 #  Project Structure
 
      LEARNING-APP 
