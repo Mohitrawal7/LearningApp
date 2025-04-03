@@ -17,6 +17,14 @@ public class Userdto {
     private String email;
     private String password;
 
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
     public String getPassword() {
         return password;
     }

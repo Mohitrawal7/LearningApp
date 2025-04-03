@@ -31,14 +31,6 @@ public class User {
     @Column(name = "active",nullable = false)
     private boolean active;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Integer getUserid() {
         return userid;
     }
@@ -47,5 +39,11 @@ public class User {
         this.userid = userid;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
