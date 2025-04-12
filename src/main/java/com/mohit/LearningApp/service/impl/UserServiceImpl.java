@@ -6,14 +6,13 @@ import com.mohit.LearningApp.repository.UserRepository;
 import com.mohit.LearningApp.service.UserService;
 import lombok.*;
 import org.modelmapper.ModelMapper;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl  implements UserService {
 
@@ -22,16 +21,14 @@ public class UserServiceImpl  implements UserService {
     final private User user = new User();
 
 
-
     private ModelMapper modelMapper = new ModelMapper();
 
     @Override
-  public Integer save(Userdto userdto) {
-    User user = modelMapper.map(userdto,User.class);
-    user.setPassword((userdto.getPassword()));
+  public Integer save(Userdto dto) {
+    User user = modelMapper.map(dto,User.class);
+    user.setPassword(dto.getPassword());
     user = userRepo.save(user);
     return user.getUserid();
 }
-
 
 }
