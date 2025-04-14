@@ -24,4 +24,15 @@ public class Group {
    @Column(name = "groupName",nullable = false)
    private String groupName;
 
+   @Column(name = "member" )
+    private  String member;
+
+   @Column(name = "description" , nullable = false)
+    private String description;
+
+   @Column(name = "Admin")
+    private String Admin;
+
+
+
 }
