@@ -9,19 +9,21 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Service
 public class UserServiceImpl  implements UserService {
 
 
-     private UserRepository userRepo;
-    final private User user = new User();
+//     private UserRepository userRepo;
+//     private final User user = new User();
+//    private ModelMapper modelMapper = new ModelMapper();
 
+    private final UserRepository userRepo;
+    private final ModelMapper modelMapper;
 
-    private ModelMapper modelMapper = new ModelMapper();
+    public UserServiceImpl(UserRepository userRepo, ModelMapper modelMapper) {
+        this.userRepo = userRepo;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
   public Integer save(Userdto dto) {
@@ -29,6 +31,6 @@ public class UserServiceImpl  implements UserService {
     user.setPassword(dto.getPassword());
     user = userRepo.save(user);
     return user.getUserid();
-}
+    }
 
 }
