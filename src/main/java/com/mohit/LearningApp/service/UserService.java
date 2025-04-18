@@ -4,7 +4,7 @@ import com.mohit.LearningApp.dto.Userdto;
 
 public interface UserService {
 
-    public Integer save(Userdto userdto);
+    public Integer save(Userdto dto);
 
 
 
