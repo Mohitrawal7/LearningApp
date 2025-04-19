@@ -8,6 +8,8 @@ import lombok.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl  implements UserService {
@@ -31,6 +33,11 @@ public class UserServiceImpl  implements UserService {
     user.setPassword(dto.getPassword());
     user = userRepo.save(user);
     return user.getUserid();
+    }
+
+    @Override
+    public List<User> getALLUser() {
+        return userRepo.findAll();
     }
 
 }
