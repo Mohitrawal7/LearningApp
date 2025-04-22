@@ -2,14 +2,18 @@ package com.mohit.LearningApp.service;
 
 import com.mohit.LearningApp.dto.Userdto;
 import com.mohit.LearningApp.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface UserService {
 
      Integer save(Userdto dto);
 
-     List<User> getALLUser();
+     List<User> getAllUser();
 
+     void deleteuser(int userid);
 
+     void deleteUser(int userid);
 }

@@ -4,7 +4,6 @@ import com.mohit.LearningApp.dto.Userdto;
 import com.mohit.LearningApp.model.User;
 import com.mohit.LearningApp.repository.UserRepository;
 import com.mohit.LearningApp.service.UserService;
-import lombok.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +35,18 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
-    public List<User> getALLUser() {
+    public List<User> getAllUser() {
         return userRepo.findAll();
+    }
+
+    @Override
+    public void deleteuser(int userid) {
+
+    }
+
+    @Override
+    public void deleteUser(int userid){
+        userRepo.deleteById(userid);
     }
 
 }
