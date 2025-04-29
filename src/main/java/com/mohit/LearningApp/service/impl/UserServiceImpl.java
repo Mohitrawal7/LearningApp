@@ -27,11 +27,10 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
-  public Integer save(Userdto dto) {
-    User user = modelMapper.map(dto,User.class);
-    user.setPassword(dto.getPassword());
-    user = userRepo.save(user);
-    return user.getUserid();
+  public Userdto save(Userdto dto) {
+    User user = toEntity(dto);
+    userRepo.save(user);
+    return toDto(user);
     }
 
     @Override
@@ -41,12 +40,35 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public void deleteuser(int userid) {
-
+       userRepo.deleteById(userid);
     }
 
     @Override
     public void deleteUser(int userid){
         userRepo.deleteById(userid);
     }
+
+
+
+    private User toEntity(Userdto dto) {
+        return User.builder()
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .active(dto.getActive())
+                .build();
+    }
+
+    private Userdto toDto(User user) {
+        return Userdto.builder()
+                .userid(user.getUserid())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .active(user.isActive())
+                .build();
+    }
+
+
 
 }

@@ -8,14 +8,14 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Userdto {
 
     private Integer userid;
     private String username;
     private String email;
     private String password;
+    private Boolean active;
 
-    public String getPassword() {
-        return password;
-    }
+
 }

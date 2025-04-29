@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "Users")
 public class User {
@@ -33,16 +34,11 @@ public class User {
     @Column(name = "active",nullable = false)
     private boolean active;
 
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean isActive() {
+        return active;
     }
 
-
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
