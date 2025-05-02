@@ -1,21 +1,16 @@
 package com.mohit.LearningApp.dto;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
-import lombok.*;
-
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-@Data
+@NoArgsConstructor
+@Entity
 @Builder
 public class Userdto {
 
-    private Integer userid;
-    private String username;
-    private String email;
-    private String password;
-    private Boolean active;
-
+private Integer userid;
 
 }

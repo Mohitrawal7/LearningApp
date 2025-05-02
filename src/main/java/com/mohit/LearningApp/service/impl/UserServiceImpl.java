@@ -1,74 +1,55 @@
 package com.mohit.LearningApp.service.impl;
 
+
+
 import com.mohit.LearningApp.dto.Userdto;
 import com.mohit.LearningApp.model.User;
 import com.mohit.LearningApp.repository.UserRepository;
 import com.mohit.LearningApp.service.UserService;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+public class UserServiceImpl implements UserService {
 
-@Service
-public class UserServiceImpl  implements UserService {
-
-
-//     private UserRepository userRepo;
-//     private final User user = new User();
-//    private ModelMapper modelMapper = new ModelMapper();
-
-    private final UserRepository userRepo;
-    private final ModelMapper modelMapper;
-
-    public UserServiceImpl(UserRepository userRepo, ModelMapper modelMapper) {
-        this.userRepo = userRepo;
-        this.modelMapper = modelMapper;
-    }
+    private UserRepository userrepo;
 
     @Override
-  public Userdto save(Userdto dto) {
-    User user = toEntity(dto);
-    userRepo.save(user);
-    return toDto(user);
+    public Userdto save(Userdto dto) {
+        User user = toEntity(dto);
+        userrepo.save(user);
+        return toDto(user);
     }
 
     @Override
     public List<User> getAllUser() {
-        return userRepo.findAll();
+        return userrepo.findAll();
     }
 
     @Override
     public void deleteuser(int userid) {
-       userRepo.deleteById(userid);
+        return userrepo.deleteById(userid);
     }
 
-    @Override
-    public void deleteUser(int userid){
-        userRepo.deleteById(userid);
-    }
-
-
-
-    private User toEntity(Userdto dto) {
-        return User.builder()
+    private User toEntity(Userdto dto){
+        User.builder()
                 .username(dto.getUsername())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .active(dto.getActive())
                 .build();
+        return null;
     }
 
-    private Userdto toDto(User user) {
-        return Userdto.builder()
+    private Userdto toDto(User user){
+        Userdto.builder()
                 .userid(user.getUserid())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .password(user.getPassword())
-                .active(user.isActive())
+//                .active()getPassword
                 .build();
+        return null;
     }
-
 
 
 }

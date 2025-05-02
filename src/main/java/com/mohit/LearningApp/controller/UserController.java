@@ -20,7 +20,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-   public UserService service;
+    public UserService service;
 
     @RequestMapping("gone")
     public String Gg(){
