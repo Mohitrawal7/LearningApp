@@ -20,7 +20,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    public UserService service;
+    public UserServiceImpl service;
 
     @RequestMapping("gone")
     public String Gg(){
@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> save(Userdto dto){
-        Userdto dto1 = service.save(dto);
+        Integer dto1 = service.save(dto);
         return new ResponseEntity<>(dto1,HttpStatus.OK);
     }
 

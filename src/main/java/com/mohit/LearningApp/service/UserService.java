@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface UserService {
 
-     Userdto save(Userdto dto);
+     Integer save(Userdto dto);
 
      List<User> getAllUser();
 
