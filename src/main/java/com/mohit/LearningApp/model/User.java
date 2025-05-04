@@ -29,28 +29,8 @@ public class User {
     @Column(name = "active")
     private Boolean active;
 
+
     public Integer getUserid() {
         return userid;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-
-
-
-
 }

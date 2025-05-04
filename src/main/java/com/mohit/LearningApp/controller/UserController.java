@@ -6,6 +6,7 @@ import com.mohit.LearningApp.model.User;
 import com.mohit.LearningApp.service.UserService;
 import com.mohit.LearningApp.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,9 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @Autowired
-    public UserServiceImpl service;
+    @Autowired(required = false)
+    private UserServiceImpl service;
+
 
     @RequestMapping("gone")
     public String Gg(){
