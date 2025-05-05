@@ -15,11 +15,11 @@ public class UserServiceImpl implements UserService {
     private User user;
 
     @Override
-    public Integer save(Userdto dto) {
-//        User user = toEntity(dto);
-        Userdto user1 = dto;
+    public Userdto save(Userdto dto) {
+        User user = toEntity(dto);
+//        Userdto user1 = dto;
          user = userrepo.save(user);
-        return user.getUserid();
+        return toDto(user);
     }
 
     @Override
@@ -32,26 +32,26 @@ public class UserServiceImpl implements UserService {
          userrepo.deleteById(userid);
     }
 
-//    private User toEntity(Userdto dto){
-//        User.builder()
-//                .userid(dto.getUserid())
-//                .username(dto.getUsername())
-//                .email(dto.getEmail())
-//                .password(dto.getPassword())
-//                .active(dto.getActive())
-//                .build();
-//        return null;
-//    }
-//
-//    private Userdto toDto(User user){
-//        Userdto.builder()
-//                .username(user.getUsername())
-//                .email(user.getEmail())
-//                .password(user.getPassword())
-//                .active(user.getActive())
-//                .build();
-//        return null;
-//    }
+    private User toEntity(Userdto dto){
+        User.builder()
+                .userid(dto.getUserid())
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .active(dto.getActive())
+                .build();
+        return null;
+    }
+
+    private Userdto toDto(User user){
+        Userdto.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .active(user.getActive())
+                .build();
+        return null;
+    }
 
 
 

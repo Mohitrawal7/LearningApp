@@ -30,7 +30,5 @@ public class User {
     private Boolean active;
 
 
-    public Integer getUserid() {
-        return userid;
-    }
+
 }

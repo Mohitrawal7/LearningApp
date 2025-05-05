@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> save(Userdto dto){
-        Integer dto1 = service.save(dto);
+        Userdto dto1 = service.save(dto);
         return new ResponseEntity<>(dto1,HttpStatus.OK);
     }
 
