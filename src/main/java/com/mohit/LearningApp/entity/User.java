@@ -1,7 +1,11 @@
 package com.mohit.LearningApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mohit.LearningApp.entity.Subject;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,7 +13,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Users")
-
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -25,11 +30,20 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)  ///role added
-    private String role;
+    @Column(nullable = false)
+    private String  role;
 
     @Column(nullable = false)
-    private LocalDate ceatedAt;
+    private LocalDate createdAt;
+
+    //one teacher can have many subjects
+    @OneToMany(mappedBy = "teacher")
+    @JsonIgnore
+    private List<Subject> subjects;
+
+    // One student can have many submissions
+    @OneToMany(mappedBy = "student")
+    private List<Submission> submissions;
 
     public Long getId() {
         return id;
@@ -71,11 +85,27 @@ public class User {
         this.role = role;
     }
 
-    public LocalDate getCeatedAt() {
-        return ceatedAt;
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCeatedAt(LocalDate ceatedAt) {
-        this.ceatedAt = ceatedAt;
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submission> submissions) {
+        this.submissions = submissions;
     }
 }

@@ -3,11 +3,14 @@ package com.mohit.LearningApp.controller;
 import com.mohit.LearningApp.dto.LoginRequest;
 import com.mohit.LearningApp.dto.LoginResponse;
 import com.mohit.LearningApp.dto.RegisterRequest;
+import com.mohit.LearningApp.dto.UserDto;
 import com.mohit.LearningApp.entity.User;
 import com.mohit.LearningApp.repository.UserRepository;
 import com.mohit.LearningApp.service.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,7 +47,7 @@ public class AuthController {
         user.setUsername(registerRequest.getUsername());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));   //protect password
         user.setEmail(registerRequest.getEmail());
-        user.setCeatedAt(registerRequest.getCreatedAt());
+        user.setCreatedAt(LocalDate.now());
         user.setRole(registerRequest.getRole());
         userRepository.save(user);
 
@@ -73,6 +76,23 @@ public class AuthController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }
+    }
+    @GetMapping("/me")
+    public ResponseEntity<UserDto> getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        User user = userRepository.findByUsername(currentUsername)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        System.out.println(user);
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setUsername(user.getUsername());
+        userDto.setRole(user.getRole());
+        userDto.setEmail(user.getEmail());
+        userDto.setCreatedAt(user.getCreatedAt());
+
+        return ResponseEntity.ok(userDto);
     }
 
 
