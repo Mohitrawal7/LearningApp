@@ -1,5 +1,6 @@
 package com.mohit.LearningApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Subject {
     private User teacher;
 
     @OneToMany(mappedBy = "subject")
+    @JsonIgnore
     private List<Assignment> assignments;
 
     public Long getId() {

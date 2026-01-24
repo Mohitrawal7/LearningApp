@@ -1,8 +1,11 @@
 package com.mohit.LearningApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mohit.LearningApp.entity.Subject;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,12 +21,13 @@ public class Assignment {
 
     private String description;
 
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     private Integer maxMarks;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
+
     private Subject subject;
 
     @OneToMany(mappedBy = "assignment")
@@ -53,11 +57,11 @@ public class Assignment {
         this.description = description;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
